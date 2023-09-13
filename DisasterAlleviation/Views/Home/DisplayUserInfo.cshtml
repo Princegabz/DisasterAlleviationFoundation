@@ -1,0 +1,38 @@
+﻿@using DisasterAlleviation.Models;
+@model IEnumerable<DisplayRecords>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Donate Page";
+}
+
+<body style="background-color: mediumpurple;">
+    <div class="text-center" style="margin-top:4%">
+        <h1 style="color:white;" class="display-4">View Donations</h1>
+    </div>
+    <br/>
+    <table border="0" cellspacing="1" cellpadding="2" class="table table-striped" style="color:white">
+        <tr>
+            <th>Date</th>
+            <th>Donation Type</th>
+            <th>Category</th>
+            <th>Number Of Items</th>
+            <th>Amount</th>
+        </tr>
+
+        @foreach (DisplayRecords d in Model)
+        {
+            <tr>
+                <td>@d.Date</td>
+                <td>@d.DonationType</td>
+                <td>@d.Category</td>
+                <td>@d.NoOfItems</td>
+                <td>@d.Amount</td>
+            </tr>
+        }
+    </table>
+    </body>
+
+
+
+
+

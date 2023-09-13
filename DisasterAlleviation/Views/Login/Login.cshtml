@@ -1,0 +1,32 @@
+﻿@*
+*@
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/Login.cshtml";
+}
+
+<div class="center-title">
+    <h1 style="color:white; margin-top:4%">Disater Alleviation Foundation</h1>
+</div>
+
+<body class="align">
+    
+    <div class="login-page">      
+        <div class="form">
+            <h1>LOGIN</h1>
+            <form asp-controller="Login" asp-action="Login" method="POST"  class="login-form">
+                <input type="text" placeholder="username" name="username"/>
+                <input type="password" placeholder="password" name="password" />
+                <button>login</button>
+                <p class="message">Not registered yet? <a asp-controller= "Registration" asp-action="Register">Create an account now</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        $('.message a').click(function(){
+   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+});
+    </script>
+
+
+</body>

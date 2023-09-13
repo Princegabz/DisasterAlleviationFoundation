@@ -1,0 +1,29 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/Login.cshtml";
+}
+<body class="align">
+    <div class="login-page">
+        
+        <div class="form">
+            <h1>REGISTER</h1>
+            <form asp-controller="Registration" asp-action="Registration" method="POST" class="login-form">
+                <input type="text" placeholder="first name" name="FirstName" />
+                <input type="text" placeholder="surname" name="surname" />
+                <input type="text" placeholder="username" name="username" />
+                <input type="password" placeholder="password" name="password" />
+                <button>create account</button>
+                <p class="message">Already registered? <a asp-controller="Login" asp-action="Login"> Sign In</a></p>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+   
+    </body>

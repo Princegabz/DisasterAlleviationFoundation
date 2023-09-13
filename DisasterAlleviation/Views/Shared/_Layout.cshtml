@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Disaster Alleviation</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color:mediumpurple;
+        }
+
+        .headline {
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .subline {
+            font-size: 25px;
+            text-align: center;
+            margin-bottom: 125px;
+        }
+
+        .subline a {
+            color: #000a0f;
+            text-decoration: none;
+            border-bottom: solid 3px #000a0f;
+            padding: 0 5px;
+            transition: 0.75s;
+        }
+
+        .subline a:hover {
+            background-color: mediumpurple;
+            color: #fff;
+        }
+
+        .button-group {
+            width: 100%;
+            text-align: center;
+            top: 5%;
+        }
+
+        .button-group a {
+             padding: 10px 30px;
+             margin: 1em;
+             border-radius: 1px;
+             text-decoration: none;
+             transition: 0.5s ease-in-out;
+        }
+
+        .btn {
+            color: white;
+            font-size: 20px;
+        }
+
+        .btn1:hover {
+            box-shadow: 0px 0px 0px 2.5px #fff, 0px 0px 0px 5px #f1c40f, 0px 0px 0px 10px transparent, 0px 0px 0px 10.5px #f1c40f;
+            background: transparent;
+            color: #f1c40f;
+        }
+</style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3" style="background-color: orange; color:white;">
+            <div class="container">
+                <a class="navbar-brand" style="font-weight:lighter; font-size:40px;color:mediumpurple; margin-left:1px; " asp-area="" asp-controller="Home" asp-action="DonationPage">Disaster Alleviation Foundation</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index" style="font-weight:bold;">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="DonationPage" style="font-weight:bold;">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="DisplayUserInfo" style="font-weight:bold;">View Donations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="DisasterPage" style="font-weight:bold;">New Disaster</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="DisasterInformation" style="font-weight:bold;">All Disasters</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

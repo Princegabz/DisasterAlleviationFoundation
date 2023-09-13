@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Donate Page";
+}
+
+<body style="background-color: mediumpurple;">
+
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="col-lg-6">
+
+                <div class="text-center" style="margin-top:4%">
+                    <h1 style="color:white;" class="display-4">Donate</h1>
+                </div>
+    <div class="text-center" style="margin-top:4%">
+        <br />
+            <div style="width: 600px; background-color: orange; backdrop-filter: blur(10px); box-shadow: 0 0 40px rgba(8,7,16,0.16); border-radius: 0px; padding: 50px 35px;">
+                <h2>Monetary Donations</h2>
+                <form asp-controller="Home" asp-action="CaptureMonetaryDonations" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail4">Amount</label>
+                            <input type="number" class="form-control" name="inputNoOfDonations" id="inputNoOfDonations" placeholder="R" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputMonetaryDate">Date</label>
+                            <input type="text" class="form-control" name="dateOfDonation" id="inputDate" placeholder="DD/MM/YY" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="gridCheck">
+                            <label class="form-check-label" for="gridCheck">
+                                Stay anonymous?
+                            </label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="background-color:mediumpurple;">Submit</button>
+                </form>
+            </div>
+            <br />
+
+            <div style="width: 600px; background-color: orange; backdrop-filter: blur(10px); box-shadow: 0 0 40px rgba(8,7,16,0.16); border-radius: 0px; padding: 50px 35px;">
+                    <h2>Goods Donations</h2>
+                    <form asp-controller="Home" asp-action="CaptureGoodsDonations" method="post">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputEmail4">Number of Items</label>
+                                <input type="number" class="form-control" name="inputNoOfGoodsDonations" id="inputNoOfDonations" placeholder="Amount of monetary donaions">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputPassword4">Date</label>
+                                <input type="text" class="form-control" name="dateOfGoodsDonation" id="inputDate" placeholder="DD/MM/YY" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" id="category" name="Category" required>
+                                <label for="Categories">Category</label>                                   
+                                    <option value="Clothes">Clothes</option>
+                                    <option value="Non-perishable Foods"> Non-perishable Foods</option>
+                                    <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group text-left">
+                            <label for="inputDescription">Description of new goods</label>
+                            <input type="text" class="form-control" name="DescriptionOfGoods" id="inputDescription" style="height:90px;" required>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-check">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: mediumpurple;">Submit</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+<br/>
+</body>
