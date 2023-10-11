@@ -11,7 +11,7 @@ namespace DisasterAlleviation.Controllers
 {
     public class HomeController : Controller
     {
-        DisplayRecords d = new DisplayRecords(); //Used for getting and setting records from the datavase like the monetary donations, disasters, and goods donations. 
+        DisplayRecords d = new DisplayRecords(); //Used for getting and setting records from the database like the monetary donations, disasters, and goods donations. 
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)

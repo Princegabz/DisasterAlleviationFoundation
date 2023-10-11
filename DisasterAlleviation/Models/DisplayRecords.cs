@@ -33,6 +33,7 @@ namespace DisasterAlleviation.Models
         public string MoneyDonated { get; set; }
         public string PurchasedGoods { get; set; }
         public string Disaster { get; set; }
+        
 
         public DisplayRecords()
         {
@@ -72,9 +73,6 @@ namespace DisasterAlleviation.Models
             return ls;
 
         }
-
-
-
         public bool verified(string user, string password) // Verifies user credentials against the database
         {
             bool valid;
@@ -220,8 +218,6 @@ namespace DisasterAlleviation.Models
                     });
                 }
                 con.Close();
-
-
             }
             catch (Exception)
             {
@@ -233,9 +229,7 @@ namespace DisasterAlleviation.Models
 
             }
             return show2;
-
         }
-
         public List<DisplayRecords> DisasterInformation()
         {
             List<DisplayRecords> show2;
@@ -260,8 +254,6 @@ namespace DisasterAlleviation.Models
                     });
                 }
                 con.Close();
-
-
             }
             catch (Exception)
             {
@@ -273,7 +265,6 @@ namespace DisasterAlleviation.Models
 
             }
             return show2;
-
         }
         public List<DisplayRecords> AvailableMoney()
         {
