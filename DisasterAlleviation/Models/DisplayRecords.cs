@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DisasterAlleviation.Models
 {
-    public class DisplayRecords //Used for getting and setting records from the datavase like the monetary donations, disasters, and goods donations. 
+    public class DisplayRecords //Used for getting and setting records from the database like the monetary donations, disasters, and goods donations. 
     {
         //Connection string to my Database
         SqlConnection con = new SqlConnection("Server=tcp:daf.database.windows.net,1433;Initial Catalog=Disaster Alleviation Foundation;Persist Security Info=False;User ID=st10085443;Password=Foxishsith76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");

@@ -17,12 +17,12 @@
     <form asp-controller="Home" asp-action="CaptureDisaster" method="post">
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="inputEmail4">Start Date</label>
-                 <input type="text" class="form-control" name="date" placeholder="DD/MM/YY" required="" autofocus /> @*Autofocus is an HTML attribute that automatically gives input focus without user having to click on it*@
+                <label for="inputStartDate">Start Date</label>
+                <input type="date" class="form-control" name="startDateOfDisaster" id="inputStartDate" required="" autofocus /> @*Autofocus is an HTML attribute that automatically gives input focus without user having to click on it*@
             </div>
             <div class="form-group col-md-6">
-                <label for="inputPassword4">End Date</label>
-                <input type="text" class="form-control" name="dateOfDonation" id="inputDate" placeholder="DD/MM/YY" required>
+                <label for="inputEndDate">End Date</label>
+                <input type="date" class="form-control" name="endDateOfDisaster" id="inputEndDate" required>
             </div>
         </div>
         <div class="form-group text-left">

@@ -79,8 +79,8 @@ namespace DisasterAlleviation.Controllers
         public IActionResult CaptureDisaster(Models.DisplayRecords CaptureD)
         {
             // Retrieve form data for capturing disaster information.
-            string start_date = Request.Form["startDateD"].ToString();
-            string end_date = Request.Form["endDateD"].ToString();
+            string start_date = Request.Form["startDateOfDisaster"].ToString();
+            string end_date = Request.Form["endDateOfDisasterz"].ToString();
             string location = Request.Form["AddLocation"].ToString();
             string description = Request.Form["AddDisasterD"].ToString();
 
