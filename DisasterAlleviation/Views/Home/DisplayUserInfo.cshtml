@@ -15,8 +15,8 @@
             <th>Date</th>
             <th>Donation Type</th>
             <th>Category</th>
-            <th>Number Of Items</th>
             <th>Amount</th>
+            @*<th>Amount</th>*@
         </tr>
 
         @foreach (DisplayRecords d in Model)
@@ -26,7 +26,7 @@
                 <td>@d.DonationType</td>
                 <td>@d.Category</td>
                 <td>@d.NoOfItems</td>
-                <td>@d.Amount</td>
+                @*<td>@d.Amount</td>*@
             </tr>
         }
     </table>

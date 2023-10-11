@@ -80,7 +80,7 @@ namespace DisasterAlleviation.Controllers
         {
             // Retrieve form data for capturing disaster information.
             string start_date = Request.Form["startDateOfDisaster"].ToString();
-            string end_date = Request.Form["endDateOfDisasterz"].ToString();
+            string end_date = Request.Form["endDateOfDisaster"].ToString();
             string location = Request.Form["AddLocation"].ToString();
             string description = Request.Form["AddDisasterD"].ToString();
 
