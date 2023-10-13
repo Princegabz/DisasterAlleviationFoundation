@@ -27,7 +27,7 @@ namespace DisasterAlleviation.Controllers
         public IActionResult DonationPage()
         {
             return View();
-        }
+        }      
         public IActionResult DisasterPage()
         {
             return View();
@@ -40,7 +40,11 @@ namespace DisasterAlleviation.Controllers
         {
             return View(d.DisasterInformation());
         }
-        public IActionResult Contact()
+        public IActionResult AllocationPage()
+        {
+            return View();
+        }
+        public IActionResult PurchaseGoods()
         {
             return View();
         }
@@ -76,6 +80,7 @@ namespace DisasterAlleviation.Controllers
                 return View("DonationPage"); // Return to the DonationPage view in case of failure.
             }
         }
+     
         public IActionResult CaptureDisaster(Models.DisplayRecords CaptureD)
         {
             // Retrieve form data for capturing disaster information.
