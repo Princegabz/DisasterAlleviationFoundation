@@ -1,5 +1,6 @@
 ﻿using DisasterAlleviation.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,8 @@ namespace DisasterAlleviation.Controllers
         }
         public IActionResult AllocationPage()
         {
+            DisplayRecords model = new DisplayRecords();
+            ViewBag.DisasterNames = model.GetDisasterNames();
             return View();
         }
         public IActionResult PurchaseGoods()

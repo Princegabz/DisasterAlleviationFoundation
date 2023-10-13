@@ -25,8 +25,13 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputDescription">Description of the disaster</label>
-                                    <input type="text" class="form-control" name="AddDisasterD" id="inputCategory" style="height:90px;" required>
-                            </div>
+                                    <select class="form-control" name="DisasterName" required>
+                                        @foreach (var disasterName in ViewBag.DisasterNames)
+                                        {
+                                            <option value="@disasterName">@disasterName</option>
+                                        }
+                                    </select>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-primary" style="background-color:mediumpurple;">Submit</button>
                         </form>
@@ -57,9 +62,14 @@
                                     <option value="Other">Other</option>
                                 </select>
                             </div>
-                            <div class="form-group text-left">
-                                <label for="inputDescription">Description of new goods</label>
-                                <input type="text" class="form-control" name="DescriptionOfGoods" id="inputDescription" style="height:90px;" required>
+                            <div class="form-group col-md-6">
+                                <label for="inputDescription">Description of the disaster</label>
+                                <select class="form-control" name="DisasterName" required>
+                                    @foreach (var disasterName in ViewBag.DisasterNames)
+                                    {
+                                        <option value="@disasterName">@disasterName</option>
+                                    }
+                                </select>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">

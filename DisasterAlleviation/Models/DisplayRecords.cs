@@ -304,6 +304,34 @@ namespace DisasterAlleviation.Models
 
         }
 
+        public List<string> GetDisasterNames()
+        {
+            List<string> disasterNames = new List<string>();
+            try
+            {
+                string sql = "SELECT Description FROM Disasters";
+                SqlCommand cmd = new SqlCommand(sql, con);
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    string disasterName = reader["Description"].ToString();
+                    disasterNames.Add(disasterName);
+                }
+            }
+            catch (Exception)
+            {
+                // Handle exceptions as needed
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return disasterNames;
+        }
+
     }
 
 }
