@@ -15,13 +15,12 @@
                     <br />                
                     <div style="width: 600px; background-color: orange; backdrop-filter: blur(10px); box-shadow: 0 0 40px rgba(8,7,16,0.16); border-radius: 0px; padding: 50px 35px;">
                         <h2>Goods Purchases</h2>
-                        <form asp-controller="Home" asp-action="CaptureGoodsDonations" method="post">
+                        <form asp-controller="Home" asp-action="PurchaseGoods" method="post">
                             <div class="form-row">
                                 <div class="form-group text-left">
-                                    <label for="inputItems">Number of Items</label>
-                                    <input type="number" class="form-control" name="inputNoOfGoodsDonations" id="inputNoOfDonations" placeholder="Number of Items">
-                                </div>
-                                
+                                    <label for="inputItems">Price</label>
+                                    <input type="number" class="form-control" name="Price" id="Price" placeholder="R">
+                                </div>             
                             </div>
                             <div class="form-group text-left">
                                 <label for="category">Category</label>
@@ -40,7 +39,7 @@
                             </div>
                             <div class="form-group text-left">
                                 <label for="inputDescription">Description of new goods</label>
-                                <input type="text" class="form-control" name="DescriptionOfGoods" id="inputDescription" style="height:90px;" required>
+                                <input type="text" class="form-control" name="Description" id="Description" style="height:90px;" required>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">

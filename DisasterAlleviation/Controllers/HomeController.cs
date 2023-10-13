@@ -41,6 +41,10 @@ namespace DisasterAlleviation.Controllers
         {
             return View(d.DisasterInformation());
         }
+        public IActionResult AllocationInformation()
+        {
+            return View(d.AllocationInformation());
+        }
         public IActionResult AllocationPage()
         {
             DisplayRecords model = new DisplayRecords();
@@ -165,22 +169,22 @@ namespace DisasterAlleviation.Controllers
             }
         }
         [HttpPost] //for processing form submissions
-        public IActionResult PurchaseGoods(Models.DisplayRecords CaptureGoodsAllocation)
+        public IActionResult PurchaseGoods(Models.DisplayRecords PurchaseGoods)
         {
             // Retrieve form data
-            int AllocationAmount = int.Parse(Request.Form["AllocationAmount"].ToString());
-            string Description = Request.Form["DisasterName"].ToString();
-            string Type = Request.Form["Category"].ToString();
+            int Price = int.Parse(Request.Form["Price"].ToString());
+            string Description = Request.Form["Description"].ToString();
+            string Category = Request.Form["Category"].ToString();
 
 
             //Checking the database to see if the user is registered in the database
-            if (CaptureGoodsAllocation.CaptureGoodsAllocation(AllocationAmount, Description, Type))
+            if (PurchaseGoods.PurchaseGoods(Price, Description, Category))
             {
                 return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
             }
             else
             {
-                return View("AllocationPage"); // Return to the AllocationPage view in case of failure.
+                return View("PurchaseGoods"); // Return to the PurchaseGoods view in case of failure.
             }
         }
     }

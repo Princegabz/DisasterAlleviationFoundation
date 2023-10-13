@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DisasterAlleviation.Models.DisplayRecords>
+
+<body style="background-color: mediumpurple;">
+    <div class="text-center" style="margin-top:4%">
+        <h1 style="color:white;" class="display-4">All Allocations</h1>
+    </div>
+    <br />
+    <table border="0" cellspacing="1" cellpadding="2" class="table table-striped" style="color:white">
+        <tr>
+            <th>Allocation Amount</th>
+            <th>Disaster</th>
+            <th>Type</th>
+        </tr>
+        @foreach (DisplayRecords d in Model)
+        {
+            <tr>
+                <td>@d.AllocationAmount</td>
+                <td>@d.Description</td>
+                <td>@d.Type</td>
+            </tr>
+        }
+    </table>
+    </body>
+
+

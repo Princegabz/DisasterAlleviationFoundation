@@ -33,7 +33,9 @@ namespace DisasterAlleviation.Models
         public string MoneyDonated { get; set; }
         public string PurchasedGoods { get; set; }
         public string Disaster { get; set; }
-        
+        public string Type { get; set; }
+        public string AllocationAmount { get; set; }
+
 
         public DisplayRecords()
         {
@@ -162,11 +164,34 @@ namespace DisasterAlleviation.Models
             con.Close();
             return valid;
         }
-        // Captures monetary allocations in the database
+        // Captures Goods allocations in the database
         public bool CaptureGoodsAllocation(int AllocationAmount, string Description, string Type)
         {
             bool valid;
             string sql = $"INSERT INTO  Allocations (AllocationAmount,Description,Type) VALUES ('{AllocationAmount}','{Description}','{Type}')";
+            SqlDataAdapter cmdSelect = new SqlDataAdapter(sql, con);
+            DataTable obj = new DataTable();
+
+            con.Open();
+            cmdSelect.Fill(obj);
+
+            if (obj.Rows.Count > 0)
+            {
+                valid = true;
+            }
+            else
+            {
+                valid = false;
+            }
+
+            con.Close();
+            return valid;
+        }
+        // Captures Goods allocations in the database
+        public bool PurchaseGoods(int Price, string Description, string Category)
+        {
+            bool valid;
+            string sql = $"INSERT INTO  PurchaseGoods (Price,Description,Category) VALUES ('{Price}','{Description}','{Category}')";
             SqlDataAdapter cmdSelect = new SqlDataAdapter(sql, con);
             DataTable obj = new DataTable();
 
@@ -297,6 +322,40 @@ namespace DisasterAlleviation.Models
                         EndDate = dr2["EndDate"].ToString(),
                         Location = dr2["Location"].ToString(),
                         dDescription = dr2["Description"].ToString()
+                    });
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+            return show2;
+        }
+        public List<DisplayRecords> AllocationInformation()
+        {
+            List<DisplayRecords> show2;
+
+            try
+            {
+                SqlDataAdapter cmd2 = new SqlDataAdapter($"select AllocationAmount,Description, Type from Allocations", con);
+                DataSet dataset2 = new DataSet();
+                con.Open();
+                cmd2.Fill(dataset2);
+                show2 = new List<DisplayRecords>();
+                foreach (DataRow dr2 in dataset2.Tables[0].Rows)
+                {
+                    show2.Add(new DisplayRecords
+                    {
+                        /* Allocation details*/
+                        AllocationAmount = dr2["AllocationAmount"].ToString(),
+                        Description = dr2["Description"].ToString(),
+                        Type = dr2["Type"].ToString()
                     });
                 }
                 con.Close();
