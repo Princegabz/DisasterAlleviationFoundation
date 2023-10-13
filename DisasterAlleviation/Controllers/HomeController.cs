@@ -55,6 +55,10 @@ namespace DisasterAlleviation.Controllers
         {
             return View();
         }
+        public IActionResult PurchaseInformation()
+        {
+            return View(d.PurchaseInformation());
+        }
         public IActionResult Allocate()
         {
             return View(d.AvailableMoney());// Display available monetary funds

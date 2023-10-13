@@ -134,3 +134,4 @@ C:\Users\lab_services_student\Downloads\Disaster-Alleviation-Foundation-2.0-mast
 C:\Users\lab_services_student\Downloads\Disaster-Alleviation-Foundation-2.0-master\Disaster-Alleviation-Foundation-2.0-master\DisasterAlleviation\obj\Debug\netcoreapp3.1\Razor\Views\Home\AllocationPage.cshtml.g.cs
 C:\Users\lab_services_student\Downloads\Disaster-Alleviation-Foundation-2.0-master\Disaster-Alleviation-Foundation-2.0-master\DisasterAlleviation\obj\Debug\netcoreapp3.1\Razor\Views\Home\PurchaseGoods.cshtml.g.cs
 C:\Users\lab_services_student\Downloads\Disaster-Alleviation-Foundation-2.0-master\Disaster-Alleviation-Foundation-2.0-master\DisasterAlleviation\obj\Debug\netcoreapp3.1\Razor\Views\Home\AllocationInformation.cshtml.g.cs
+C:\Users\lab_services_student\Downloads\Disaster-Alleviation-Foundation-2.0-master\Disaster-Alleviation-Foundation-2.0-master\DisasterAlleviation\obj\Debug\netcoreapp3.1\Razor\Views\Home\PurchaseInformation.cshtml.g.cs

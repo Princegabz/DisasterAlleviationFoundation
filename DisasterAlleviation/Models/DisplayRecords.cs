@@ -35,7 +35,7 @@ namespace DisasterAlleviation.Models
         public string Disaster { get; set; }
         public string Type { get; set; }
         public string AllocationAmount { get; set; }
-
+        public string Price { get; set; }
 
         public DisplayRecords()
         {
@@ -356,6 +356,40 @@ namespace DisasterAlleviation.Models
                         AllocationAmount = dr2["AllocationAmount"].ToString(),
                         Description = dr2["Description"].ToString(),
                         Type = dr2["Type"].ToString()
+                    });
+                }
+                con.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+            return show2;
+        }
+        public List<DisplayRecords> PurchaseInformation()
+        {
+            List<DisplayRecords> show2;
+
+            try
+            {
+                SqlDataAdapter cmd2 = new SqlDataAdapter($"select Price,Description,Category from PurchaseGoods", con);
+                DataSet dataset2 = new DataSet();
+                con.Open();
+                cmd2.Fill(dataset2);
+                show2 = new List<DisplayRecords>();
+                foreach (DataRow dr2 in dataset2.Tables[0].Rows)
+                {
+                    show2.Add(new DisplayRecords
+                    {
+                        /* Allocation details*/
+                        Price = dr2["Price"].ToString(),
+                        Description = dr2["Description"].ToString(),
+                        Category = dr2["Category"].ToString()
                     });
                 }
                 con.Close();
