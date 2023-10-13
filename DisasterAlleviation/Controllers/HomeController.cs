@@ -1,5 +1,6 @@
 ﻿using DisasterAlleviation.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace DisasterAlleviation.Controllers
         public IActionResult DonationPage()
         {
             return View();
-        }
+        }      
         public IActionResult DisasterPage()
         {
             return View();
@@ -40,9 +41,23 @@ namespace DisasterAlleviation.Controllers
         {
             return View(d.DisasterInformation());
         }
-        public IActionResult Contact()
+        public IActionResult AllocationInformation()
+        {
+            return View(d.AllocationInformation());
+        }
+        public IActionResult AllocationPage()
+        {
+            DisplayRecords model = new DisplayRecords();
+            ViewBag.DisasterNames = model.GetDisasterNames();
+            return View();
+        }
+        public IActionResult PurchaseGoods()
         {
             return View();
+        }
+        public IActionResult PurchaseInformation()
+        {
+            return View(d.PurchaseInformation());
         }
         public IActionResult Allocate()
         {
@@ -118,7 +133,64 @@ namespace DisasterAlleviation.Controllers
             { 
                     return View("DonationPage");// Return to the DonationPage view in case of failure.
             }
-        }       
+        }
+        [HttpPost] //for processing form submissions
+        public IActionResult CaptureMonetaryAllocations(Models.DisplayRecords CaptureMonetaryAllocation)
+        {
+            // Retrieve form data
+            int AllocationAmount = int.Parse(Request.Form["AllocationAmount"].ToString());
+            string Description = Request.Form["DisasterName"].ToString();
+
+
+
+            //Checking the database to see if the user is registered in the database
+            if (CaptureMonetaryAllocation.CaptureMonetaryAllocation(AllocationAmount, Description))
+            {
+                return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
+            }
+            else
+            {
+                return View("AllocationPage"); // Return to the AllocationPage view in case of failure.
+            }
+        }
+        [HttpPost] //for processing form submissions
+        public IActionResult CaptureGoodsAllocations(Models.DisplayRecords CaptureGoodsAllocation)
+        {
+            // Retrieve form data
+            int AllocationAmount = int.Parse(Request.Form["AllocationAmount"].ToString());
+            string Description = Request.Form["DisasterName"].ToString();
+            string Type = Request.Form["Category"].ToString();
+
+
+            //Checking the database to see if the user is registered in the database
+            if (CaptureGoodsAllocation.CaptureGoodsAllocation(AllocationAmount, Description, Type))
+            {
+                return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
+            }
+            else
+            {
+                return View("AllocationPage"); // Return to the AllocationPage view in case of failure.
+            }
+        }
+        [HttpPost] //for processing form submissions
+        public IActionResult PurchaseGoods(Models.DisplayRecords PurchaseGoods)
+        {
+            // Retrieve form data
+            int Price = int.Parse(Request.Form["Price"].ToString());
+            string Description = Request.Form["Description"].ToString();
+            string Category = Request.Form["Category"].ToString();
+
+
+            //Checking the database to see if the user is registered in the database
+            if (PurchaseGoods.PurchaseGoods(Price, Description, Category))
+            {
+                return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
+            }
+            else
+            {
+                return View("PurchaseGoods"); // Return to the PurchaseGoods view in case of failure.
+            }
+        }
     }
 }
 
