@@ -83,7 +83,6 @@ namespace DisasterAlleviation.Controllers
                 return View("DonationPage"); // Return to the DonationPage view in case of failure.
             }
         }
-     
         public IActionResult CaptureDisaster(Models.DisplayRecords CaptureD)
         {
             // Retrieve form data for capturing disaster information.
@@ -126,7 +125,64 @@ namespace DisasterAlleviation.Controllers
             { 
                     return View("DonationPage");// Return to the DonationPage view in case of failure.
             }
-        }       
+        }
+        [HttpPost] //for processing form submissions
+        public IActionResult CaptureMonetaryAllocations(Models.DisplayRecords CaptureMonetaryAllocation)
+        {
+            // Retrieve form data
+            int AllocationAmount = int.Parse(Request.Form["AllocationAmount"].ToString());
+            string Description = Request.Form["DisasterName"].ToString();
+
+
+
+            //Checking the database to see if the user is registered in the database
+            if (CaptureMonetaryAllocation.CaptureMonetaryAllocation(AllocationAmount, Description))
+            {
+                return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
+            }
+            else
+            {
+                return View("AllocationPage"); // Return to the AllocationPage view in case of failure.
+            }
+        }
+        [HttpPost] //for processing form submissions
+        public IActionResult CaptureGoodsAllocations(Models.DisplayRecords CaptureGoodsAllocation)
+        {
+            // Retrieve form data
+            int AllocationAmount = int.Parse(Request.Form["AllocationAmount"].ToString());
+            string Description = Request.Form["DisasterName"].ToString();
+            string Type = Request.Form["Category"].ToString();
+
+
+            //Checking the database to see if the user is registered in the database
+            if (CaptureGoodsAllocation.CaptureGoodsAllocation(AllocationAmount, Description, Type))
+            {
+                return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
+            }
+            else
+            {
+                return View("AllocationPage"); // Return to the AllocationPage view in case of failure.
+            }
+        }
+        [HttpPost] //for processing form submissions
+        public IActionResult PurchaseGoods(Models.DisplayRecords CaptureGoodsAllocation)
+        {
+            // Retrieve form data
+            int AllocationAmount = int.Parse(Request.Form["AllocationAmount"].ToString());
+            string Description = Request.Form["DisasterName"].ToString();
+            string Type = Request.Form["Category"].ToString();
+
+
+            //Checking the database to see if the user is registered in the database
+            if (CaptureGoodsAllocation.CaptureGoodsAllocation(AllocationAmount, Description, Type))
+            {
+                return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
+            }
+            else
+            {
+                return View("AllocationPage"); // Return to the AllocationPage view in case of failure.
+            }
+        }
     }
 }
 

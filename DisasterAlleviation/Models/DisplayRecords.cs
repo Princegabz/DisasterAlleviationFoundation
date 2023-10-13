@@ -139,6 +139,52 @@ namespace DisasterAlleviation.Models
             con.Close();
             return valid;
         }
+        // Captures monetary allocations in the database
+        public bool CaptureMonetaryAllocation(int AllocationAmount, string Description)
+        {
+            bool valid;
+            string sql = $"INSERT INTO  Allocations (AllocationAmount,Description,Type) VALUES ('{AllocationAmount}','{Description}','Money')";
+            SqlDataAdapter cmdSelect = new SqlDataAdapter(sql, con);
+            DataTable obj = new DataTable();
+
+            con.Open();
+            cmdSelect.Fill(obj);
+
+            if (obj.Rows.Count > 0)
+            {
+                valid = true;
+            }
+            else
+            {
+                valid = false;
+            }
+
+            con.Close();
+            return valid;
+        }
+        // Captures monetary allocations in the database
+        public bool CaptureGoodsAllocation(int AllocationAmount, string Description, string Type)
+        {
+            bool valid;
+            string sql = $"INSERT INTO  Allocations (AllocationAmount,Description,Type) VALUES ('{AllocationAmount}','{Description}','{Type}')";
+            SqlDataAdapter cmdSelect = new SqlDataAdapter(sql, con);
+            DataTable obj = new DataTable();
+
+            con.Open();
+            cmdSelect.Fill(obj);
+
+            if (obj.Rows.Count > 0)
+            {
+                valid = true;
+            }
+            else
+            {
+                valid = false;
+            }
+
+            con.Close();
+            return valid;
+        }
         // Captures goods donations in the database
         public bool CaptureGoods(string dateT, int surNoOfItemsname, string Category, string Description)
         {

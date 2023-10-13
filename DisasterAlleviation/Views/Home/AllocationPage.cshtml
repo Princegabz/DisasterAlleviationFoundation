@@ -21,16 +21,23 @@
                             <div class="form-row">
                                 <div class="form-group text-left">
                                     <label for="inputEmail4">Amount</label>
-                                    <input type="number" class="form-control" name="inputNoOfDonations" id="inputNoOfDonations" placeholder="R" required>
+                                    <input type="number" class="form-control" name="AllocationAmount" id="AllocationAmount" placeholder="R" required>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputDescription">Description of the disaster</label>
-                                    <select class="form-control" name="DisasterName" required>
-                                        @foreach (var disasterName in ViewBag.DisasterNames)
-                                        {
-                                            <option value="@disasterName">@disasterName</option>
-                                        }
-                                    </select>
+                                    @if (ViewBag.DisasterNames != null)
+                                    {
+                                        <select class="form-control" name="DisasterName" required>
+                                            @foreach (var disasterName in ViewBag.DisasterNames)
+                                            {
+                                                <option value="@disasterName">@disasterName</option>
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <p>Allocation is Successfull.</p>
+                                    }
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary" style="background-color:mediumpurple;">Submit</button>
@@ -40,16 +47,16 @@
 
                     <div style="width: 600px; background-color: orange; backdrop-filter: blur(10px); box-shadow: 0 0 40px rgba(8,7,16,0.16); border-radius: 0px; padding: 50px 35px;">
                         <h2>Goods Allocations</h2>
-                        <form asp-controller="Home" asp-action="CaptureGoodsDonations" method="post">
+                        <form asp-controller="Home" asp-action="CaptureGoodsAllocations" method="post">
                             <div class="form-row">
                                 <div class="form-group text-left">
                                     <label for="inputItems">Number of Items</label>
-                                    <input type="number" class="form-control" name="inputNoOfGoodsDonations" id="inputNoOfDonations" placeholder="Number of Items">
+                                    <input type="number" class="form-control" name="AllocationAmount" id="AllocationAmount" placeholder="Number of Items">
                                 </div>
                             </div>
                             <div class="form-group text-left">
                                 <label for="category">Category</label>
-                                <select class="form-control" id="category" name="Category" required>
+                                <select class="form-control" id="Category" name="Category" required>
                                     <option value="Clothes">Clothes</option>
                                     <option value="Non-perishable Foods">Non-perishable Foods</option>
                                     <option value="Household Items">Household Items</option>
@@ -64,12 +71,19 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="inputDescription">Description of the disaster</label>
-                                <select class="form-control" name="DisasterName" required>
-                                    @foreach (var disasterName in ViewBag.DisasterNames)
-                                    {
-                                        <option value="@disasterName">@disasterName</option>
-                                    }
-                                </select>
+                                @if (ViewBag.DisasterNames != null)
+                                {
+                                    <select class="form-control" name="DisasterName" required>
+                                        @foreach (var disasterName in ViewBag.DisasterNames)
+                                        {
+                                            <option value="@disasterName">@disasterName</option>
+                                        }
+                                    </select>
+                                }
+                                else
+                                {
+                                    <p>Allocation is Successfull.</p>
+                                }
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
@@ -82,6 +96,4 @@
             </div>
         </div>
     </div>
-    <br />
 </body>
-
