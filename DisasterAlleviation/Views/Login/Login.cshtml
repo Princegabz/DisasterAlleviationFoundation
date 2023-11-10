@@ -20,8 +20,16 @@
                 <button>login</button>
                 <p class="message">Not registered yet? <a asp-controller= "Registration" asp-action="Register">Create an account now</a></p>
             </form>
+           @* <form asp-controller="Login" asp-action="Login" method="POST" class="login-form">
+                <input type="text" placeholder="username" name="username" />
+                <input type="password" placeholder="password" name="password" />
+                <button>login</button>
+                <p class="message">Not registered yet? <a asp-controller="Registration" asp-action="Register">Create an account now</a></p>
+            </form>*@
         </div>
     </div>
+    <br>
+    
     <script>
         $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");

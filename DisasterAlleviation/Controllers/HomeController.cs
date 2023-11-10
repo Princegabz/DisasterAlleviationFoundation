@@ -24,7 +24,6 @@ namespace DisasterAlleviation.Controllers
         {
             return View("Index");
         }
-
         public IActionResult DonationPage()
         {
             return View();
