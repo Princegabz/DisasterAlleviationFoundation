@@ -11,10 +11,11 @@ namespace DisasterAlleviation.Controllers
 {
     public class LoginController : Controller
     {
+        DisplayRecords d = new DisplayRecords();
         // GET request for displaying the login view
         public IActionResult Login()
         {
-             return View();
+             return View(d.AllocationInformation());
         }
 
         [HttpPost] // POST request for processing user login data
