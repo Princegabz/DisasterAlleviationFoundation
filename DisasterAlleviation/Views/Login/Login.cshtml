@@ -9,8 +9,6 @@
     <h1 style="color:white; margin-top:4%">Disaster Alleviation Foundation</h1>
 </div>
 
-<body class="align">
-
     <div class="login-page">      
         <div class="form">
             <h1>LOGIN</h1>
@@ -33,37 +31,31 @@
     </div>  
     <br/>
         @model IEnumerable<DisasterAlleviation.Models.DisplayRecords>
-
-    <div class="text-center" style="margin-top:4%">
-        <h1 style="color:white;" class="display-4"> active disasters, with the money and goods allocated to the disaster</h1>
+ 
+    <div class="login-page" style="width: 300px; background-color: orange; backdrop-filter: blur(10px); box-shadow: 0 0 40px rgba(8,7,16,0.16); border-radius: 0px; padding: 50px 35px;">
+    <h1> Active Disasters (with the money and goods allocated to the disaster)</h1>
+    <form asp-controller="details" asp-action="details" method="GET" class="details-form">
+ 
+        <table border="0" cellspacing="2" cellpadding="2" class="table table-striped" style="color:black">
+            <tr>
+                <th>Allocation Amount</th>
+                <th>Disaster</th>
+                <th>Type</th>
+            </tr>
+            @foreach (DisplayRecords d in Model)
+            {
+                <tr>
+                    <td>@d.AllocationAmount</td>
+                    <td>@d.Description</td>
+                    <td>@d.Type</td>
+                </tr>
+            }
+        </table>
+    </form>
     </div>
     <br />
-    <table border="0" cellspacing="1" cellpadding="2" class="table table-striped" style="color:white">
-        <tr>
-            <th>Allocation Amount</th>
-            <th>Disaster</th>
-            <th>Type</th>
-        </tr>
-        @if (Model != null)
-            {
-        @foreach (DisplayRecords d in Model)
-        {
-            <tr>
-                <td>@d.AllocationAmount</td>
-                <td>@d.Description</td>
-                <td>@d.Type</td>
-            </tr>
-        }
-            }
-            else
-            {
-                <p>No records found.</p>
-            }
-    </table>
-    
     <script>
         $('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
     </script>
-</body>

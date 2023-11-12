@@ -58,7 +58,7 @@ namespace DisasterAlleviation.Models
 
             return donationCount;
         }
-        public int GetMDonationCountForUser() //Count for goods dontions
+        public int GetMDonationCountForUser() //Count for Monetary dontions
         {
             int MdonationCount = 0;
 
