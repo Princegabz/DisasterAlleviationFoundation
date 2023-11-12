@@ -42,7 +42,7 @@ namespace DisasterAlleviation.Models
         public string AllocationAmount { get; set; }
         public string Price { get; set; }
 
-        public int GetDonationCountForUser()
+        public int GetDonationCountForUser() //Count for goods donations
         {
             int donationCount = 0;
 
@@ -50,13 +50,29 @@ namespace DisasterAlleviation.Models
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(UserId) FROM Donations WHERE UserId = 0", connection))
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(UserId) FROM Donations WHERE DonationType='Goods Donation'", connection))
                 {
                     donationCount = (int)command.ExecuteScalar();
                 }
             }
 
             return donationCount;
+        }
+        public int GetMDonationCountForUser() //Count for goods dontions
+        {
+            int MdonationCount = 0;
+
+            using (SqlConnection connection = new SqlConnection("Server=tcp:daf.database.windows.net,1433;Initial Catalog=Disaster Alleviation Foundation;Persist Security Info=False;User ID=st10085443;Password=Foxishsith76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(UserId) FROM Donations WHERE DonationType='Monetary Donation'", connection))
+                {
+                    MdonationCount = (int)command.ExecuteScalar();
+                }
+            }
+
+            return MdonationCount;
         }
 
 

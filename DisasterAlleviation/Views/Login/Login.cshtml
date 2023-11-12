@@ -24,9 +24,9 @@
         <div style="width: 300px; background-color: orange; backdrop-filter: blur(10px); box-shadow: 0 0 40px rgba(8,7,16,0.16); border-radius: 0px; padding: 50px 35px;">
             <form asp-controller="details" asp-action="details" method="GET" class="details-form">
                 <div class="form-group text-left">
-                    <label for="MonetaryDonations">Total monetary donations received:</label>
+                    <label for="MonetaryDonations">Total monetary donations received:  @ViewBag.MDonationCount</label>
                     <br/>
-                    <label for="GoodsDonations">Total number of goods received:</label>
+                    <label for="GoodsDonations">Total number of goods received: @ViewBag.DonationCount</label>
                 </div>
             </form>                
         </div>

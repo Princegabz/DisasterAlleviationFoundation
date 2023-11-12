@@ -15,7 +15,13 @@ namespace DisasterAlleviation.Controllers
         // GET request for displaying the login view
         public IActionResult Login()
         {
-             return View(d.AllocationInformation());
+            int donationCount = d.GetDonationCountForUser();
+            ViewBag.DonationCount = donationCount; // You can use a model instead of ViewBag if you prefer.
+
+            int MdonationCount = d.GetMDonationCountForUser();
+            ViewBag.MDonationCount = MdonationCount;
+
+            return View(d.AllocationInformation());
         }
 
         [HttpPost] // POST request for processing user login data
