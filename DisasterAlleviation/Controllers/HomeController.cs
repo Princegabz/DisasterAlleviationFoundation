@@ -145,7 +145,7 @@ namespace DisasterAlleviation.Controllers
             //Checking the database to see if the user is registered in the database
             if (CaptureMonetaryAllocation.CaptureMonetaryAllocation(AllocationAmount, Description))
             {
-                return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
+               return RedirectToAction("Notification", "Home"); //redirects to a the Notification action
             }
             else
             {
