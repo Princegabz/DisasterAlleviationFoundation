@@ -9,24 +9,53 @@
     <h1 style="color:white; margin-top:4%">Disaster Alleviation Foundation</h1>
 </div>
 
-<body class="align">
-    
     <div class="login-page">      
         <div class="form">
             <h1>LOGIN</h1>
             <form asp-controller="Login" asp-action="Login" method="POST"  class="login-form">
-                <input type="text" placeholder="username" name="username"/>
+                <input type="text" placeholder="username" name="username" />
                 <input type="password" placeholder="password" name="password" />
                 <button>login</button>
                 <p class="message">Not registered yet? <a asp-controller= "Registration" asp-action="Register">Create an account now</a></p>
             </form>
         </div>
+            <div class="form">
+            <form asp-controller="details" asp-action="details" method="GET" class="details-form">
+                <div class="form-group text-left">
+                    <h4>Total monetary donations received:  @ViewBag.SumOfMonetaryDonations</h4>
+                    <h4>Total number of goods received: @ViewBag.DonationCount</h4>
+                </div>
+            </form>                
+        </div>
+    </div>  
+    <br/>
+        @model IEnumerable<DisasterAlleviation.Models.DisplayRecords>
+ 
+    <div class="login-page" style="width: 300px; background-color: orange; backdrop-filter: blur(10px); box-shadow: 0 0 40px rgba(8,7,16,0.16); border-radius: 0px; padding: 50px 35px;">
+    <h1> Active Disasters </h1>
+    <h4>(With the money and goods allocated to the disaster)</h4>
+    <form asp-controller="details" asp-action="details" method="GET" class="details-form">
+ 
+        <table border="0" cellspacing="2" cellpadding="2" class="table table-striped" style="color:black">
+            <tr>
+                <th>Allocation Amount</th>
+                <th>Disaster</th>
+                <th>Type</th>
+            </tr>
+            @foreach (DisplayRecords d in Model)
+            {
+                <tr>
+                    <td>@d.AllocationAmount</td>
+                    <td>@d.Description</td>
+                    <td>@d.Type</td>
+                </tr>
+            }
+        </table>
+    </form>
     </div>
+    <br />
     <script>
         $('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
+        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+        });
     </script>
-
-
-</body>

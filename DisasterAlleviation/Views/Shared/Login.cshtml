@@ -4,7 +4,6 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <!-- <link rel="stylesheet" href="css/login.css" type="text/css" media="all" /> -->
     <style>
  /* Center the title text horizontally */
  .center-title {
@@ -120,12 +119,44 @@ body {
      -moz-osx-font-smoothing: grayscale;
  }
 
+
+
+
+        /* Body background color */
+        body {
+            background: mediumpurple;
+            font-family: "Roboto", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Table styling */
+        table {
+            color: white;
+        }
+
+            table th, table td {
+                border: 1px solid white;
+                padding: 8px;
+            }
+
+        /* Navbar background color */
+        .navbar {
+            background-color: orange;
+            color: white;
+        }
+
+        /* Navbar links styling */
+        .navbar-nav .nav-link {
+            font-weight: bold;
+        }
 </style>
 
 </head>
 <body>
     <div>
         @RenderBody()
+
     </div>
 </body>
 </html>

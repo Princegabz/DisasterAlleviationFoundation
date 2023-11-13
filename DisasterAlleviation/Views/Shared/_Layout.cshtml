@@ -9,7 +9,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color:mediumpurple;
+            background-color: mediumpurple;
         }
 
         .headline {
@@ -23,18 +23,18 @@
             margin-bottom: 125px;
         }
 
-        .subline a {
-            color: #000a0f;
-            text-decoration: none;
-            border-bottom: solid 3px #000a0f;
-            padding: 0 5px;
-            transition: 0.75s;
-        }
+            .subline a {
+                color: #000a0f;
+                text-decoration: none;
+                border-bottom: solid 3px #000a0f;
+                padding: 0 5px;
+                transition: 0.75s;
+            }
 
-        .subline a:hover {
-            background-color: mediumpurple;
-            color: #fff;
-        }
+                .subline a:hover {
+                    background-color: mediumpurple;
+                    color: #fff;
+                }
 
         .button-group {
             width: 100%;
@@ -42,13 +42,13 @@
             top: 5%;
         }
 
-        .button-group a {
-             padding: 10px 30px;
-             margin: 1em;
-             border-radius: 1px;
-             text-decoration: none;
-             transition: 0.5s ease-in-out;
-        }
+            .button-group a {
+                padding: 10px 30px;
+                margin: 1em;
+                border-radius: 1px;
+                text-decoration: none;
+                transition: 0.5s ease-in-out;
+            }
 
         .btn {
             color: white;
@@ -60,7 +60,7 @@
             background: transparent;
             color: #f1c40f;
         }
-</style>
+    </style>   
 </head>
 <body>
     <header>
@@ -99,6 +99,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="PurchaseInformation" style="font-weight:bold;">View Purchases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Login" asp-action="Login" style="font-weight:bold;">Sign Out</a>
                         </li>
                     </ul>
                 </div>

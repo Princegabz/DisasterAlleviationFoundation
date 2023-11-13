@@ -4,6 +4,11 @@ using System.Collections.Generic;
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Infrastructure;
+using DisasterAlleviation.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using Xunit;
 
 namespace DisasterAlleviation.Models
 {
@@ -12,7 +17,7 @@ namespace DisasterAlleviation.Models
         //Connection string to my Database
         SqlConnection con = new SqlConnection("Server=tcp:daf.database.windows.net,1433;Initial Catalog=Disaster Alleviation Foundation;Persist Security Info=False;User ID=st10085443;Password=Foxishsith76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         public string user_id { get; set; }
-       // [Required(ErrorMessage = "Username is required.")]
+        // [Required(ErrorMessage = "Username is required.")]
         public string user_name { get; set; }
         public string user_surname { get; set; }
         public string Amount { get; set; }
@@ -37,6 +42,43 @@ namespace DisasterAlleviation.Models
         public string AllocationAmount { get; set; }
         public string Price { get; set; }
 
+        public int GetDonationCountForUser() //Count for goods donations
+        {
+            int donationCount = 0;
+
+            using (SqlConnection connection = new SqlConnection("Server=tcp:daf.database.windows.net,1433;Initial Catalog=Disaster Alleviation Foundation;Persist Security Info=False;User ID=st10085443;Password=Foxishsith76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT COUNT(UserId) FROM Donations WHERE DonationType='Goods Donation'", connection))
+                {
+                    donationCount = (int)command.ExecuteScalar();
+                }
+            }
+
+            return donationCount;
+        }
+        public decimal GetSumOfMonetaryDonationsForUser()
+        {
+            decimal sumOfMonetaryDonations = 0;
+
+            using (SqlConnection connection = new SqlConnection("Server=tcp:daf.database.windows.net,1433;Initial Catalog=Disaster Alleviation Foundation;Persist Security Info=False;User ID=st10085443;Password=Foxishsith76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand("SELECT SUM(CAST(NoOfItems AS decimal(18,2))) FROM Donations WHERE UserId = 0 AND DonationType = 'Monetary Donation'", connection))
+                {
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        sumOfMonetaryDonations = Convert.ToDecimal(result);
+                    }
+                }
+            }
+
+            return sumOfMonetaryDonations;
+        }
+
         public DisplayRecords()
         {
             this.user_id = "";
@@ -51,27 +93,28 @@ namespace DisasterAlleviation.Models
         }
 
         // Retrieves a list of users from the database.
-        public List<DisplayRecords> getStudents(){
+        public List<DisplayRecords> getStudents()
+        {
             List<DisplayRecords> ls = new List<DisplayRecords>();
             SqlDataAdapter cmdSelect = new SqlDataAdapter($"SELECT * FROM Users", con);
             DataTable obj = new DataTable();
             DataRow dr;
-         
-                con.Open();
-                cmdSelect.Fill(obj);
 
-                if (obj.Rows.Count > 0)
+            con.Open();
+            cmdSelect.Fill(obj);
+
+            if (obj.Rows.Count > 0)
+            {
+
+                for (int i = 0; i < obj.Rows.Count; i++)
                 {
-                    
-                    for (int i = 0; i < obj.Rows.Count; i++)
-                    {
-                        dr = obj.Rows[i];
-                        ls.Add(new DisplayRecords((string)dr[0], (string)dr[1], (string)dr[2]));
-                    }
+                    dr = obj.Rows[i];
+                    ls.Add(new DisplayRecords((string)dr[0], (string)dr[1], (string)dr[2]));
                 }
+            }
 
             con.Close();
-   
+
             return ls;
 
         }
@@ -234,7 +277,7 @@ namespace DisasterAlleviation.Models
             return valid;
         }
         // Captures disaster information in the database
-        public bool CaptureD(string stat_date,string end_date, string location, string description)
+        public bool CaptureD(string stat_date, string end_date, string location, string description)
         {
             bool valid;
             string sql = $"INSERT INTO  Disasters (StartDate,EndDate,Location,Description) VALUES ('{stat_date}','{end_date}','{location}','{description}')";
@@ -371,6 +414,7 @@ namespace DisasterAlleviation.Models
             }
             return show2;
         }
+
         public List<DisplayRecords> PurchaseInformation()
         {
             List<DisplayRecords> show2;
@@ -411,7 +455,7 @@ namespace DisasterAlleviation.Models
 
             try
             {
-                SqlDataAdapter cmd2 = new SqlDataAdapter($"select MoneyDonated,PurchasedGoods,Disaster from Allocating", con);
+                SqlDataAdapter cmd2 = new SqlDataAdapter($"select MoneyDonated,PurchasedGoods,Disaster from Allocation", con);
                 DataSet dataset2 = new DataSet();
                 con.Open();
                 cmd2.Fill(dataset2);
@@ -470,13 +514,5 @@ namespace DisasterAlleviation.Models
 
             return disasterNames;
         }
-
     }
-
 }
-
-
-
-
-
-
