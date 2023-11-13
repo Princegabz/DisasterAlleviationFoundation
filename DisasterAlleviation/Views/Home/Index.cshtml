@@ -7,8 +7,6 @@
 }
 <div class="text-center">
 <h1 class="display-4"></h1>
-
-
 </div>
 
 <form asp-controller="Home" asp-action="DonationPage">
@@ -16,16 +14,10 @@
         <div class="intro">
             <h1 align="center">Disaster Allevation Foundation</h1>
             <p>Our mission is to provide practical aid during disasters</p>
-
-         @*   <h1>Donation Count:</h1>
-            <p>@ViewBag.DonationCount</p>*@
-
             <button>Make a Donation</button>
-        </div>
-        
+        </div>       
     </main>
 </form>
-
 <style>
     body {
         margin: 0;
@@ -89,7 +81,6 @@
             text-transform: uppercase;
             margin: 20px 0;
         }
-
         .intro button {
             background-color: #FFA500;
             color: #fff;
@@ -101,6 +92,4 @@
             cursor: pointer;
             box-shadow: 0px 0px 20px rgba(147,112,219)
         }
-
-
 </style>
