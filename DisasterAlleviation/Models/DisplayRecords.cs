@@ -58,23 +58,26 @@ namespace DisasterAlleviation.Models
 
             return donationCount;
         }
-        public int GetMDonationCountForUser() //Count for Monetary dontions
+        public decimal GetSumOfMonetaryDonationsForUser()
         {
-            int MdonationCount = 0;
+            decimal sumOfMonetaryDonations = 0;
 
             using (SqlConnection connection = new SqlConnection("Server=tcp:daf.database.windows.net,1433;Initial Catalog=Disaster Alleviation Foundation;Persist Security Info=False;User ID=st10085443;Password=Foxishsith76;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"))
             {
                 connection.Open();
 
-                using (SqlCommand command = new SqlCommand("SELECT COUNT(UserId) FROM Donations WHERE DonationType='Monetary Donation'", connection))
+                using (SqlCommand command = new SqlCommand("SELECT SUM(CAST(NoOfItems AS decimal(18,2))) FROM Donations WHERE UserId = 0 AND DonationType = 'Monetary Donation'", connection))
                 {
-                    MdonationCount = (int)command.ExecuteScalar();
+                    object result = command.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        sumOfMonetaryDonations = Convert.ToDecimal(result);
+                    }
                 }
             }
 
-            return MdonationCount;
+            return sumOfMonetaryDonations;
         }
-
 
         public DisplayRecords()
         {

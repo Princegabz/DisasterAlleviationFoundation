@@ -16,10 +16,10 @@ namespace DisasterAlleviation.Controllers
         public IActionResult Login()
         {
             int donationCount = d.GetDonationCountForUser();
-            ViewBag.DonationCount = donationCount; // You can use a model instead of ViewBag if you prefer.
+            ViewBag.DonationCount = donationCount; 
 
-            int MdonationCount = d.GetMDonationCountForUser();
-            ViewBag.MDonationCount = MdonationCount;
+            decimal sumOfMonetaryDonations = d.GetSumOfMonetaryDonationsForUser();
+            ViewBag.SumOfMonetaryDonations = sumOfMonetaryDonations;
 
             return View(d.AllocationInformation());
         }
